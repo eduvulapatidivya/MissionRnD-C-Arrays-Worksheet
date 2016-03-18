@@ -12,11 +12,40 @@ ERROR CASES: Return -1 for invalid inputs.
 
 NOTES: Don't create new array, try to change the input array.
 */
-
-#include <stdio.h>
+#include<stdio.h>
 
 int removeArrayDuplicates(int *Arr, int len)
 {
-	
-	return -1;
+	int i, maxlength = 1, j, offset = 0, value = 0;
+	if (Arr && len > 0)
+	{
+		for (i = 1; i < len; i++)
+		{
+
+			offset = 0;
+			value = Arr[i];
+			for (j = 0; j < maxlength; j++)
+			{
+				if (Arr[j] == value)
+				{
+					offset = 1;
+					break;
+				}
+			}
+			if (offset != 1)
+			{
+				Arr[j] = value;
+				maxlength++;
+			}
+
+		}
+		for (i = maxlength; i < len; i++)
+		{
+			Arr[i] = NULL;
+		}
+		return maxlength;
+
+	}
+	else
+		return -1;
 }

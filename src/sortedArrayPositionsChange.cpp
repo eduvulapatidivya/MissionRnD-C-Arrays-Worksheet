@@ -11,9 +11,40 @@ ERROR CASES: Return NULL for invalid Inputs.
 NOTES:
 */
 
-#include <stdio.h>
+#include<stdio.h>
+void* swap(int *Arr, int i, int j)
+{
+	Arr[i] = Arr[i] + Arr[j];
+	Arr[j] = Arr[i] - Arr[j];
+	Arr[i] = Arr[i] - Arr[j];
+	return NULL;
+}
 
 void * sortedArrayPositionsChange(int *Arr, int len)
+
 {
+	int i = 0, j = len - 1, temp;
+	if (Arr&&len > 0)
+	{
+		while (i < j)
+		{
+			if (Arr[i] <= Arr[i + 1] && Arr[j] >= Arr[j - 1])
+			{
+				i++;
+				j--;
+			}
+			else if (Arr[i] <= Arr[i + 1] && Arr[j] <= Arr[j - 1])
+				i++;
+			else if (Arr[i] >= Arr[i + 1] && Arr[j] >= Arr[j - 1])
+				j--;
+			else
+			{
+
+				swap(Arr, i, j);
+				break;
+			}
+		}
+
+	}
 	return NULL;
 }

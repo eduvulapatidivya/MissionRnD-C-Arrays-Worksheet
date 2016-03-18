@@ -11,10 +11,29 @@ ERROR CASES: Return NULL for invalid inputs.
 NOTES: Use realloc to allocate memory.
 */
 
+
 #include <stdio.h>
 #include <malloc.h>
 
 int * sortedArrayInsertNumber(int *Arr, int len, int num)
 {
-	return NULL;
+	int i;
+	if (Arr&&len > 0)
+	{
+
+		Arr = (int*)realloc(Arr, sizeof(int)*(len + 1));
+		for (i = len - 1; num<Arr[i] && i >= 0; i--)
+		{
+			Arr[i + 1] = Arr[i];
+		}
+		Arr[i + 1] = num;
+
+		return Arr;
+	}
+	else
+	{
+		return NULL;
+
+	}
+
 }
